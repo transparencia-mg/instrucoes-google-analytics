@@ -82,4 +82,4 @@ production:
   <<: *default
   database: transparencia-google-analytics_production
   username: transparencia-google-analytics_
-  password: <%= ENV['RAILS_ADMIN_TEMPLATE_DATABASE_PASSWORD'] %>
+  password: <%= ENV['TRANSPARENCIA_GOOGLE_ANALYTICS_DATABASE_PASSWORD'] %>

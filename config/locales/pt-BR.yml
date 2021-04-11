@@ -59,7 +59,7 @@ pt-BR:
       message: "Mensagem"
     actions:
       dashboard:
-        title: "Bem vindo ao painel de lancamentos rails_admin_template"
+        title: "Bem vindo ao painel de lancamentos Portal da Transparência - Google Analytics"
         menu: "Dashboard"
         breadcrumb: "Dashboard"
       index:
