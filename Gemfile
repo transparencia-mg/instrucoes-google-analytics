@@ -31,6 +31,7 @@ gem 'devise' # administrar login no sistema
 gem 'cancancan', '~> 1.15.0' # gerencia permissões do app
 gem 'date_helper' # Cálculo dos períodos que serão lançados - utilizado no application helpers
 gem 'rails_admin_rollincode', '~> 1.0' #Novo padrão visual para rails_admin
+gem 'nokogiri' #Importação arquivo .csv
 # Gems instaladas no projeto
 
 # Reduces boot times through caching; required in config/boot.rb
