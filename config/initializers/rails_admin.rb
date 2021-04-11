@@ -6,7 +6,7 @@ RailsAdmin.config do |config|
   # Personalizando menu de navegação com links adicionais
   config.navigation_static_links = {
     # Apontar para youtube com vídeos e tutoriais para alimentação de cada tabela
-    'Links' => 'https://google.com' # COLOCAR LINK DESEJADO
+    'Arquivo Google Analytics' => 'importations/new',
   }
 
   config.navigation_static_label = "Lins Úteis"
