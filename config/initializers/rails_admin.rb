@@ -1,7 +1,7 @@
 RailsAdmin.config do |config|
 
   # Customizando o nome do app
-  config.main_app_name = ["Colocar Aqui", "| Nome do App"]
+  config.main_app_name = ["Portal da Transparência", "| Google Analytics"]
 
   # Personalizando menu de navegação com links adicionais
   config.navigation_static_links = {
