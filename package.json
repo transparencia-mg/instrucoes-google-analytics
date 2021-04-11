@@ -1,5 +1,5 @@
 {
-  "name": "rails-admin-template",
+  "name": "transparencia-google-analytics",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -13,3 +13,4 @@
     "webpack-dev-server": "^3.11.0"
   }
 }
+
