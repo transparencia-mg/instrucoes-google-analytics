@@ -47,10 +47,7 @@ class ImportationsController < ApplicationController
   def classification(imported_url, classified_url)
     classification_description = ''
     if classified_url.include?(imported_url.first(3).last)
-      if !UrlClassification.where(url:imported_url.first(3).last).first.nil?
-        # raise
-        classification_description = UrlClassification.where(url:imported_url.first(3).last).first.classification
-      end
+        classification_description = UrlClassification.where(url:imported_url.join('/')).first.classification
     else
       classification_description = 'Outros'
     end
