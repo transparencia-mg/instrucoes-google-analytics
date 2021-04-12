@@ -11,11 +11,19 @@ class Level < ApplicationRecord
       field  :name
     end
     create do
-      field  :level
+      field :level, :enum do
+        enum do
+          [1, 2, 3]
+        end
+      end
       field  :name
     end
     edit do
-      field  :level
+      field :level, :enum do
+        enum do
+          [1, 2, 3]
+        end
+      end
       field  :name
     end
   end
