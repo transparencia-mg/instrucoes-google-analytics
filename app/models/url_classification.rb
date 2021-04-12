@@ -1,22 +1,21 @@
 class UrlClassification < ApplicationRecord
-  belongs_to :level
 
   rails_admin do
     show do
-      field  :level
       field  :url
+      field  :classification
     end
     list do
-      field  :level
       field  :url
+      field  :classification
     end
     create do
-      field  :level
       field  :url
+      field  :classification
     end
     edit do
-      field  :level
       field  :url
+      field  :classification
     end
   end
 end

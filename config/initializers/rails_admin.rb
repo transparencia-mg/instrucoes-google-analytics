@@ -22,16 +22,6 @@ RailsAdmin.config do |config|
   ## == CancanCan ==
   config.authorize_with :cancancan
 
-  config.model 'Level' do
-    object_label_method do
-      :custom_label_method_level
-    end
-  end
-
-  def custom_label_method_level
-    "#{self.level} | #{self.name}"
-  end
-
   ## == Pundit ==
   # config.authorize_with :pundit
 

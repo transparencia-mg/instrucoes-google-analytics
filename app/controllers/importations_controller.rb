@@ -13,13 +13,13 @@ class ImportationsController < ApplicationController
     else
       # csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
       # CSV.foreach(params[:file].path, csv_options) do |row|
+      url_classified_array = url_objets_to_classifications_array(UrlClassification.all.to_a)
       CSV.foreach(params[:file].path) do |row|
         # puts "#{row[0]} | #{row[1]} | #{row[2]} | #{row[1].split('/').reject(&:blank?).count} | #{row[1].split('/').reject(&:blank?)}"
-        url_array = row[1].split('/').reject(&:blank?)
-        raise
+        url_imported_array = row[1].split('/').reject(&:blank?)
         file_path = params[:file].original_filename.split(' - ')[0].strip
         CSV.open(file_path, 'a+') do |csv|
-          csv << [category(url_array),
+          csv << [classification(url_imported_array, url_classified_array),
                   row[0],
                   row[1],
                   row[2],
@@ -36,27 +36,24 @@ class ImportationsController < ApplicationController
     end
   end
 
-  def category(url_array)
-    category_description = ''
-    if url_array.count = 1
-      level_one_url = url_descriptions(UrlClassification.where(level: Level.where(level:1)))
-      if level_one_url.include? url_array[0]
-        category_description =
-      end
-    elsif url_array.count = 2
-      level_two_url = url_descriptions(UrlClassification.where(level: Level.where(level:2)))
-    elsif url_array.count = 3
-      level_three_url = url_descriptions(UrlClassification.where(level: Level.where(level:3)))
-    else
-      category_description = 'Outros'
+  def url_objets_to_classifications_array(url_array)
+    url_array_classification = []
+    url_array.each do |url|
+      url_array_classification << url.url.split('/').reject(&:blank?).last
     end
+    url_array_classification
   end
 
-  def url_descriptions(url_objects)
-    urls_array = []
-    url_objects.to_a.each do |url|
-      urls_array << url.name
+  def classification(imported_url, classified_url)
+    classification_description = ''
+    if classified_url.include?(imported_url.first(3).last)
+      if !UrlClassification.where(url:imported_url.first(3).last).first.nil?
+        # raise
+        classification_description = UrlClassification.where(url:imported_url.first(3).last).first.classification
+      end
+    else
+      classification_description = 'Outros'
     end
-    urls_array
+    classification_description
   end
 end
