@@ -6,6 +6,8 @@ class ImportationsController < ApplicationController
   # https://programmingresources.fandom.com/wiki/Ruby:_Deleting_Files#:~:text=To%20delete%20a%20file%20you,command%20of%20the%20File%20class.&text=You%20can%20use%20ruby's%20%22fileutils,to%20achieve%20deleting%20folders%2Fdirectories.
   require 'fileutils'
 
+  # before_action :import, method: :post, only: [:new]
+
   def new
   end
 
@@ -81,5 +83,11 @@ class ImportationsController < ApplicationController
         csv << row
       end
     end
+  end
+
+  private
+
+  def sucess
+    redirect_to importations_new_path
   end
 end
