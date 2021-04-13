@@ -15,9 +15,9 @@
     * Segundo relatório de Novembro de 2021: 11_2021_2
     * Observações:
         * Não é necessário incluir 0 nos meses entre janeiro e setembro
-    - separação entre mes, ano e versão deverá ser feito com [underscore](https://pt.wikipedia.org/wiki/Sublinhado)
-    - Caso padrão do nome não seja seguido corretamente a classificação poderá não ocorrer corretamente
-- Mova o arquivo exportado para pasta Google Drive correta da DTA - [Portal_Transparencia_Indicadores do Portal](https://drive.google.com/drive/folders/15KuJy3qSzsi9fVAsxrnCmlr_TNUR6iyG?usp=sharing)
+        * separação entre mes, ano e versão deverá ser feito com [underscore](https://pt.wikipedia.org/wiki/Sublinhado)
+        * Caso padrão do nome não seja seguido corretamente a classificação poderá não ocorrer corretamente
+8. Mova o arquivo exportado para pasta Google Drive correta da DTA - [Portal_Transparencia_Indicadores do Portal](https://drive.google.com/drive/folders/15KuJy3qSzsi9fVAsxrnCmlr_TNUR6iyG?usp=sharing)
 
 ## Exportação arquivo .csv a partir do Google Sheets
 - Duplicar a aba gerada no arquivo Google Sheets (não será necessário renomear a nova aba criada
