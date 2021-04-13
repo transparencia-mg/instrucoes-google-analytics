@@ -3,6 +3,8 @@ class ImportationsController < ApplicationController
   require 'open-uri'
   require 'nokogiri'
   require 'csv'
+  # https://programmingresources.fandom.com/wiki/Ruby:_Deleting_Files#:~:text=To%20delete%20a%20file%20you,command%20of%20the%20File%20class.&text=You%20can%20use%20ruby's%20%22fileutils,to%20achieve%20deleting%20folders%2Fdirectories.
+  require 'fileutils'
 
   def new
   end
@@ -68,6 +70,8 @@ class ImportationsController < ApplicationController
     respond_to do |format|
       format.csv { send_data to_csv(params[:file_path]), filename: "#{params[:file_path]}_classificado" }
     end
+    # Deleta o arquivo após a classificação e exportação
+    FileUtils.rm_rf(params[:file_path])
   end
 
   def to_csv(file_path)
