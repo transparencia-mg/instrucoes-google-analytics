@@ -27,7 +27,7 @@
 4. Inserir uma coluna em branco do lado esquerdo da coluna "A" (nova coluna a criada deverá ficar em branco).
 5. Colocar em todas as células da nova consulta cridada o nome do arquivo, seguindo o mesmo padrão de nomenclatura sugerido no item 7 do tópico anterior.
     * Dica: Copie e cole o nome do arquivo já modificado.
-6. Arquivo>Download>.csv
+6. No menu superior direito Google Sheets acesse Arquivo>Download>.csv
 
 
 
