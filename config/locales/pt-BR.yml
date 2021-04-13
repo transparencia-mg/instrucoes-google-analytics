@@ -9,6 +9,9 @@ pt-BR:
       user:
         one: "Usuário"
         other: "Usuários"
+      url_classification:
+        one: "Classificação de URL"
+        other: "Classificação de URLs"
     attributes:
       user:
         name: "Nome"
@@ -16,6 +19,9 @@ pt-BR:
         email: "Email"
         password: "Senha"
         password_confirmation: "Confirmação Senha"
+      url_classification:
+        url: "URL"
+        classification: "Classificação"
   views:
   admin:
     home:
