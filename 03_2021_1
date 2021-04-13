@@ -2,7 +2,7 @@ classificacao,periodo,url,sessoes,porcentagem_novas_sessoes,novos_usuarios,taxa_
 Página Inicial,3_2021_1,/www.transparencia.mg.gov.br,69.415,"61,22%",42.498,"18,04%","7,77",0:05:13,"0,00%"
 Pessoal,3_2021_1,/estado-pessoal,15.256,"48,60%",7.414,"5,32%","8,10",0:06:06,"0,00%"
 Remuneração de Servidores,3_2021_1,/estado-pessoal/remuneracao-dos-servidores,8.059,"29,68%",2.392,"22,06%","5,27",0:05:01,"0,00%"
-COVID-19,3_2021_1,/covid-19,4.199,"80,50%",3.38,"58,18%","2,00",0:01:04,"0,00%"
+Corona Virus,3_2021_1,/covid-19,4.199,"80,50%",3.38,"58,18%","2,00",0:01:04,"0,00%"
 Despesa com Pessoal,3_2021_1,/estado-pessoal/despesa-com-pessoal,3.007,"61,76%",1.857,"7,45%","9,80",0:06:51,"0,00%"
 Outros,3_2021_1,/component/transparenciamg/despesa-orgaos/2018/01-01-2018/31-12-2018/3787/1851/491/20/42,2.089,"91,81%",1.918,"73,29%","2,21",0:01:27,"0,00%"
 Outros,3_2021_1,/component/transparenciamg/convenios-entrada-pesquisa-avancada,1.724,"79,99%",1.379,"58,47%","2,74",0:01:55,"0,00%"

@@ -41,7 +41,7 @@ class ImportationsController < ApplicationController
           count += 1
         end
       end
-      redirect_to importations_new_path
+      redirect_to export_path(file_path: file_path)
     end
   end
 
@@ -56,7 +56,7 @@ class ImportationsController < ApplicationController
   def classification(imported_url, classified_url)
     classification_description = ''
     if classified_url.include?(imported_url.first(3).last) && !UrlClassification.where(url:imported_url.join('/')).first.nil?
-        classification_description = UrlClassification.where(url:imported_url.join('/')).first.classification
+      classification_description = UrlClassification.where(url:imported_url.join('/')).first.classification
     else
       classification_description = 'Outros'
     end
@@ -66,20 +66,16 @@ class ImportationsController < ApplicationController
   def export
     # https://gorails.com/episodes/export-to-csv
     respond_to do |format|
-      format.csv { send_data to_csv, filename: "texte-exportacao" }
+      format.csv { send_data to_csv(params[:file_path]), filename: "#{params[:file_path]}_classificado" }
     end
   end
 
-  def to_csv
-      CSV.generate(headers: true) do |csv|
-        CSV.foreach("03_2021_1") do |row|
-          csv << row
-        end
+  def to_csv(file_path)
+    csv_options = { col_sep: ';', quote_char: '"', headers: true }
+    CSV.generate(csv_options) do |csv|
+      CSV.foreach(file_path) do |row|
+        csv << row
       end
     end
+  end
 end
-
-
-# puts "#{row[0]} | #{row[1]} | #{row[2]} | #{row[1].split('/').reject(&:blank?).count} | #{row[1].split('/').reject(&:blank?)}"
-# csv_options = { col_sep: ',', quote_char: '"' }
-# CSV.foreach(params[:file].path, csv_options) do |row|
