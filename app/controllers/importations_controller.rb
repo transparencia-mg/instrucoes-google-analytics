@@ -11,14 +11,22 @@ class ImportationsController < ApplicationController
     if params[:file].nil?
       redirect_to importations_new_path
     else
-      # csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
-      # CSV.foreach(params[:file].path, csv_options) do |row|
+      file_path = params[:file].original_filename.split(' - ')[0].strip
       url_classified_array = url_objets_to_classifications_array(UrlClassification.all.to_a)
-      CSV.foreach(params[:file].path) do |row|
-        # puts "#{row[0]} | #{row[1]} | #{row[2]} | #{row[1].split('/').reject(&:blank?).count} | #{row[1].split('/').reject(&:blank?)}"
-        url_imported_array = row[1].split('/').reject(&:blank?)
-        file_path = params[:file].original_filename.split(' - ')[0].strip
-        CSV.open(file_path, 'a+') do |csv|
+      count = 0
+      CSV.open(file_path, 'a+') do |csv|
+        CSV.foreach(params[:file].path) do |row|
+          url_imported_array = row[1].split('/').reject(&:blank?)
+          csv << %w(classificacao
+                    periodo
+                    url
+                    sessoes
+                    porcentagem_novas_sessoes
+                    novos_usuarios
+                    taxa_rejeicao
+                    paginas_sessao
+                    duração_media_sessao
+                    ) if count == 0
           csv << [classification(url_imported_array, url_classified_array),
                   row[0],
                   row[1],
@@ -30,6 +38,7 @@ class ImportationsController < ApplicationController
                   row[7],
                   row[8],
                 ]
+          count += 1
         end
       end
       redirect_to importations_new_path
@@ -53,4 +62,24 @@ class ImportationsController < ApplicationController
     end
     classification_description
   end
+
+  def export
+    # https://gorails.com/episodes/export-to-csv
+    respond_to do |format|
+      format.csv { send_data to_csv, filename: "texte-exportacao" }
+    end
+  end
+
+  def to_csv
+      CSV.generate(headers: true) do |csv|
+        CSV.foreach("03_2021_1") do |row|
+          csv << row
+        end
+      end
+    end
 end
+
+
+# puts "#{row[0]} | #{row[1]} | #{row[2]} | #{row[1].split('/').reject(&:blank?).count} | #{row[1].split('/').reject(&:blank?)}"
+# csv_options = { col_sep: ',', quote_char: '"' }
+# CSV.foreach(params[:file].path, csv_options) do |row|

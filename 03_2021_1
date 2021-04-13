@@ -1,3 +1,4 @@
+classificacao,periodo,url,sessoes,porcentagem_novas_sessoes,novos_usuarios,taxa_rejeicao,paginas_sessao,duração_media_sessao
 Página Inicial,3_2021_1,/www.transparencia.mg.gov.br,69.415,"61,22%",42.498,"18,04%","7,77",0:05:13,"0,00%"
 Pessoal,3_2021_1,/estado-pessoal,15.256,"48,60%",7.414,"5,32%","8,10",0:06:06,"0,00%"
 Remuneração de Servidores,3_2021_1,/estado-pessoal/remuneracao-dos-servidores,8.059,"29,68%",2.392,"22,06%","5,27",0:05:01,"0,00%"
