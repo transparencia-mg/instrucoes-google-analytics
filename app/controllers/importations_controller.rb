@@ -77,8 +77,7 @@ class ImportationsController < ApplicationController
   end
 
   def to_csv(file_path)
-    csv_options = { col_sep: ';', quote_char: '"', headers: true }
-    CSV.generate(csv_options) do |csv|
+    CSV.generate(col_sep: ';', quote_char: '"', headers: true) do |csv|
       CSV.foreach(file_path) do |row|
         csv << row
       end
