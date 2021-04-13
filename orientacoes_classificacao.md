@@ -3,10 +3,10 @@
 ## Exportação arquivo Google Analytics
 1. Acessar [Google Analytics](https://analytics.google.com/) (necessário já estar com acesso liberado a informações do [Portal da Transparência](http://www.transparencia.mg.gov.br/))
 2. Na barra de opções superior selecionar o site desejado (Todos os dados do website)
-3 - No menu lateral esquerdo acessar Comportamento>Conteúdo do Site>Página de Destino
-4 - Selecione o período desejado na aba lateral direita (Não esqueça de "Aplicar" as modificações)
-5 - Vá para o final da página e selecione a opção para exibir 5.000 linhas por vez
-  5.1 - Observe o número de registros do relatório para prever o número de exportações necessárias
+3. No menu lateral esquerdo acessar Comportamento>Conteúdo do Site>Página de Destino
+4. Selecione o período desejado na aba lateral direita (Não esqueça de "Aplicar" as modificações)
+5. Vá para o final da página e selecione a opção para exibir 5.000 linhas por vez
+  5.1. Observe o número de registros do relatório para prever o número de exportações necessárias
   - São gerados, em média 25.000 registros mês, exigindo, portanto a exportação do relatório aprximadamente 5 vezes
 - Volte para o início da página e clique na opção Exportar>Planilha Google
 - Renomei o arquivo exportado no padrao mes_ano_versao, exemplo
