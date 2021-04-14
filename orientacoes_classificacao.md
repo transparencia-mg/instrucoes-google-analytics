@@ -29,6 +29,24 @@
     * Dica: Copie e cole o nome do arquivo já modificado.
 6. No menu superior direito Google Sheets acesse Arquivo>Download>.csv
 
+## Realização classificação automática
+1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
+  * Caso não possua login e senha solicitar via e-mail para gabriel.dornas@cge.mg.gov.br
+2. No menu lateral esquerdo selecione Links Úteis>Arquivo Google Analytics
+  * Ao clicar uma nova aba será aberta com a url - https://transparencia-google-analytics.herokuapp.com/importations/new
+    * Caso alguma mensagem de erro ocorra copie e cole a url acima
+3. Selecione o arquivo .csv gerado na etapa acima clicando no botão "Choose File"
+4. Com arquivo selecionado e clique no botão "Importar Arquivos"
+5. Novo arquivo .csv será exportado via Browser COM A CLASSIFICAÇÃO REALIZADA
+  * O consolidado dos arquivos gerados após a classificação deverá ser incluído no repositório https://github.com/dados-mg/google-analytics/tree/master/data
+
+## Aprimorando o cadastro De-para
+1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
+  * Caso não possua login e senha solicitar via e-mail para gabriel.dornas@cge.mg.gov.br
+2. No menu lateral esquerdo selecione Navegação>Classificação de URLs
+3. Selecione a opção "Criar Novo" e inclua a URL e sua classificação no formulário. Não esqueça de selecionar o botão "Gravar"
+  * Não incluir a barra "/" no início do cadastro da url
+
 
 
 ## Dúvidas
