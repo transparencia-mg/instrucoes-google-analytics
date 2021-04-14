@@ -53,8 +53,3 @@
 - Formatação arquivo .csv exportado
   - "" em string?
   - campos % pode converter para integer (colocar . e retirar %) para explicar do datapackage o tipo de campo?
-
- -----
-
-  # Solicitar revisão durante reunião GABRIEL
-
