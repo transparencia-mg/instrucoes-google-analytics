@@ -1,5 +1,7 @@
 class UrlClassification < ApplicationRecord
 
+  validates :url, uniqueness: true
+
   rails_admin do
     show do
       field  :url

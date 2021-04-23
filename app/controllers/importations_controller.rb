@@ -63,6 +63,8 @@ class ImportationsController < ApplicationController
     elsif classified_url.include?(imported_url.first.split('?').first)
       # classificação Busca - possui link diferente - separado por "?"
       classification_description = UrlClassification.where(url:imported_url.first.split('?').first).first.classification
+    elsif imported_url.first == 'banco-de-noticias'
+      classification_description = UrlClassification.where(url:'banco-de-noticias').first.classification
     else
       classification_description = 'Outros'
     end
