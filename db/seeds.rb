@@ -1,7 +1,7 @@
 # /db/seeds.rb
-
+# Deletar Usuário
 User.delete_all
-
+# Criar usuário
 User.create name:'Gabriel Dornas', admin:true, email: 'gabrielbdornas@gmail.com', password: 123456, password_confirmation:123456
 User.create name:'Silviana faria', admin:true, email: 'silviana.faria@cge.mg.gov.br', password: 123456, password_confirmation:123456
 User.create name:'Késia Bonfá', admin:true, email: 'kesia.bomfa@cge.mg.gov.br', password: 123456, password_confirmation:123456
