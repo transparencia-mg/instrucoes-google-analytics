@@ -15,20 +15,19 @@ class ImportationsController < ApplicationController
     else
       file_path = params[:file].original_filename.split(' - ')[0].strip
       url_classified_array = url_objets_to_classifications_array(UrlClassification.all.to_a)
-      count = 0
       CSV.open(file_path, 'a+') do |csv|
+        csv << %w(classificacao
+                  periodo
+                  url
+                  sessoes
+                  porcentagem_novas_sessoes
+                  novos_usuarios
+                  taxa_rejeicao
+                  paginas_sessao
+                  duração_media_sessao
+                  )
         CSV.foreach(params[:file].path) do |row|
           url_imported_array = row[1].split('/').reject(&:blank?)
-          csv << %w(classificacao
-                    periodo
-                    url
-                    sessoes
-                    porcentagem_novas_sessoes
-                    novos_usuarios
-                    taxa_rejeicao
-                    paginas_sessao
-                    duração_media_sessao
-                    ) if count == 0
           csv << [classification(url_imported_array, url_classified_array),
                   row[0],
                   row[1],
@@ -40,7 +39,6 @@ class ImportationsController < ApplicationController
                   row[7],
                   row[8],
                 ]
-          count += 1
         end
       end
       redirect_to export_path(file_path: file_path)
