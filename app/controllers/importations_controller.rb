@@ -57,8 +57,14 @@ class ImportationsController < ApplicationController
 
   def classification(imported_url, classified_url)
     classification_description = ''
-    if classified_url.include?(imported_url.first(3).last) && !UrlClassification.where(url:imported_url.join('/')).first.nil?
-      classification_description = UrlClassification.where(url:imported_url.join('/')).first.classification
+    # Último && evita erros no código
+    if classified_url.include?(imported_url.first(3).last) && !UrlClassification.where(url:imported_url[0..2].join('/')).first.nil?
+      # o último iten (após "/") das urls classificadas tem que ser igual ao terceiro item
+      # (após "/") da url importada
+      classification_description = UrlClassification.where(url:imported_url[0..2].join('/')).first.classification
+    elsif classified_url.include?(imported_url.first.split('?').first)
+      # classificação Busca - possui link diferente - separado por "?"
+      classification_description = UrlClassification.where(url:imported_url.first.split('?').first).first.classification
     else
       classification_description = 'Outros'
     end
