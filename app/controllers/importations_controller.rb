@@ -74,7 +74,7 @@ class ImportationsController < ApplicationController
   def export
     # https://gorails.com/episodes/export-to-csv
     respond_to do |format|
-      format.csv { send_data to_csv(params[:file_path]), filename: "#{params[:file_path]}_classificado" }
+      format.csv { send_data to_csv(params[:file_path]), filename: "#{params[:file_path]}_analytics_portal_transparencia_classificado.csv" }
     end
     # Deleta o arquivo após a classificação e exportação
     FileUtils.rm_rf(params[:file_path])
