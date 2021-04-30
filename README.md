@@ -39,7 +39,10 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 5. Novo arquivo .csv será exportado via Browser COM A CLASSIFICAÇÃO REALIZADA
   * Entre a importação e classificação de um arquivo para outro é necessário atualizar a página
 6. Ao final da classificação de todos os arquivos do mês unifica-los para inclusão no repositório https://github.com/dados-mg/google-analytics/tree/master/data
-  * Padrão da nomenclatura "portal-paginas-destino-AAAA-MM.csv"
+  * Padrão da nomenclatura:
+
+     - propriedade PORTAL: "portal-paginas-destino-AAAA-MM.csv";
+     - propriedade CKAN: "ckan-paginas-destino-AAA-MM.csv"
 
 ## Aprimorando o cadastro De-para
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
