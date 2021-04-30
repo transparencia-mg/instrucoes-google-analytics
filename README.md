@@ -36,6 +36,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 3. Selecione o arquivo .csv gerado na etapa acima clicando no botão "Choose File"
 4. Com arquivo selecionado e clique no botão "Importar Arquivos"
 5. Novo arquivo .csv será exportado via Browser COM A CLASSIFICAÇÃO REALIZADA
+  * Entre a importação e classificação de um arquivo para outro é necessário atualizar a página
 6. Ao final da classificação de todos os arquivos do mês unifica-los para inclusão no repositório https://github.com/dados-mg/google-analytics/tree/master/data
   * Padrão da nomenclatura "portal-paginas-destino-AAAA-MM.csv"
 
