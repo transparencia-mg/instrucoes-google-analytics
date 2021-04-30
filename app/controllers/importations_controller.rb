@@ -16,28 +16,29 @@ class ImportationsController < ApplicationController
       file_path = params[:file].original_filename.split(' - ')[0].strip
       url_classified_array = url_objets_to_classifications_array(UrlClassification.all.to_a)
       CSV.open(file_path, 'a+') do |csv|
-        csv << %w(classificacao
-                  periodo
-                  url
+        csv << %w(propriedade
+                  mes
+                  pagina-destino
+                  URL
                   sessoes
-                  porcentagem_novas_sessoes
-                  novos_usuarios
-                  taxa_rejeicao
-                  paginas_sessao
-                  duração_media_sessao
+                  novas-sessoes-porcentagem
+                  usuarios-novos
+                  taxa-rejeicao
+                  paginas-sessao
+                  duracao-sessao
                   )
         CSV.foreach(params[:file].path) do |row|
           url_imported_array = row[1].split('/').reject(&:blank?)
-          csv << [classification(url_imported_array, url_classified_array),
+          csv << ["portal",
+                  file_path.split('-')[4].to_i,
+                  classification(url_imported_array, url_classified_array),
                   row[0],
                   row[1],
                   row[2],
                   row[3],
                   row[4],
                   row[5],
-                  row[6],
-                  row[7],
-                  row[8],
+                  row[6]
                 ]
         end
       end
@@ -74,7 +75,7 @@ class ImportationsController < ApplicationController
   def export
     # https://gorails.com/episodes/export-to-csv
     respond_to do |format|
-      format.csv { send_data to_csv(params[:file_path]), filename: "#{params[:file_path]}_analytics_portal_transparencia_classificado.csv" }
+      format.csv { send_data to_csv(params[:file_path]), filename: params[:file_path] }
     end
     # Deleta o arquivo após a classificação e exportação
     FileUtils.rm_rf(params[:file_path])
