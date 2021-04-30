@@ -13,13 +13,11 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
     * Observe o número de registros do relatório para prever o número de exportações necessárias; e
     * São gerados, em média 25.000 registros mês, exigindo, portanto a exportação do relatório aprximadamente 5 vezes.
 6. Volte para o início da página e clique na opção Exportar>Planilha Google.
-7. Renomei o arquivo exportado no padrao mes_ano_versao, exemplo:
-    * Primeiro relatório de Março de 2021: 3_2021_1;
-    * Quinto relatório de Janeiro de 2020: 1_2020_5; e
-    * Segundo relatório de Novembro de 2021: 11_2021_2.
+7. Renomei o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv", exemplo:
+    * Primeiro relatório de Março de 2021: portal-paginas-destino-2021-03-01.csv;
+    * Quinto relatório de Janeiro de 2020: portal-paginas-destino-2020-01-05.csv; e
+    * Segundo relatório de Novembro de 2021: portal-paginas-destino-2021-11-02.csv.
     * Observações:
-        * Não é necessário incluir o dígito 0 nos meses entre janeiro e setembro;
-        * Separação entre mes, ano e versão deverá ser feito com [underscore](https://pt.wikipedia.org/wiki/Sublinhado); e
         * Caso padrão do nome não seja seguido corretamente a classificação poderá não ocorrer corretamente
 8. Mova o arquivo exportado para pasta Google Drive correta da DTA - [Portal_Transparencia_Indicadores do Portal](https://drive.google.com/drive/folders/15KuJy3qSzsi9fVAsxrnCmlr_TNUR6iyG?usp=sharing). Observe a necessidade de criação de supastas ano/mês para armazenamento correto do arquivo.
 
@@ -28,10 +26,6 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 )
 2. Apagar todas as linhas superiores até a linha aonde se iniciar o primeiro registro.
 3. Apagar todas as linhas inferiores até a linha do último registro.
-4. Inserir uma coluna em branco do lado esquerdo da coluna "A" (nova coluna a criada deverá ficar em branco).
-5. Colocar em todas as células da nova consulta cridada o nome do arquivo, seguindo o mesmo padrão de nomenclatura sugerido no item 7 do tópico anterior.
-    * Dica: Copie e cole o nome do arquivo já modificado.
-6. No menu superior direito Google Sheets acesse Arquivo>Download>.csv
 
 ## Realização classificação automática
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
@@ -50,10 +44,3 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 2. No menu lateral esquerdo selecione Navegação>Classificação de URLs
 3. Selecione a opção "Criar Novo" e inclua a URL e sua classificação no formulário. Não esqueça de selecionar o botão "Gravar"
   * Não incluir a barra "/" no início do cadastro da url
-
-
-
-## Dúvidas
-- Formatação arquivo .csv exportado
-  - "" em string?
-  - campos % pode converter para integer (colocar . e retirar %) para explicar do datapackage o tipo de campo?
