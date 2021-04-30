@@ -1,237 +1,59 @@
-# Referências:
-
-- Máquina Linux Ubunto 20.04 (Ruby instalado default)
-- Instalação rails
-```
-# terminal
-
-## verfica dependencias
-$ ruby -v # verifica ruby geralmente pré-instaldo
-$ rmv list rubies # verifica todas as versoes instaladas
-$ node --version # testa node instalado
-$ yarn --version # testa yarn instalado
-$ gem list rails # VERIFICA versões rails disponíveis (gem install rails para versao mais recente e definida como padrao)
-
-# Instalar node - https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
-$ sudo apt update
-$ sudo apt install nodejs
-
-# Instalar yarn -- https://classic.yarnpkg.com/en/docs/install/#debian-stable
-$ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-$ sudo apt update && sudo apt install yarn
-
-## Instalar rails
-$ gem install rails # CASO rails AINDA NAO ESTEJA INSTALDO
-
-```
-
--YouTube
-https://www.youtube.com/watch?v=0Y7B4h3Mwi8
-https://www.youtube.com/watch?v=zeaNeuZC3tA&t=743s
-https://www.youtube.com/watch?v=LrbB1sjF8Ts&t=877s
-https://www.youtube.com/watch?v=fHoWq_jiWHs&t=1s
-https://www.youtube.com/watch?v=MQbdH0aBiFo&t=18s
-
-# Funcionalidades
-
-[x] Criação painel admin para gerenciar lançamentos
-
-```
-# gemfile
-
-gem 'rails_admin'
-```
-
-```
-# terminal
-
-bundle
-rails g rails_admin:install
-```
-
-[x] Usuário poderá logar no sistema.
-- Usuário não poderá criar login e senha ou se cadastrar. Somente usuário admin poderá gerenciar usuários cadastrados. Como primeira versão apenas usuário admin poderá gerenciar senhas caso unidades a percam.
-- Cada unidades(hospital) terá um login único para lançamento de suas informações
-
-
-* implementação:
-- criação model user:
-
-```
-# termianl
-rails g model nome:string user admin:boolean
-```
-
-- implementação devise gem
-
-```
-# Gemfile
-
-gem 'devise'
-```
-
-```
-# terminal
-
-bundle
-rails generate devise:install
-rails generate devise User
-```
-- Validações casdro de usuário (email único e sem possibilidade de se registrar ou recuperar senha)
-
-```
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  # :registerable, :recoverable -- para não deixar usuário se cadastrar ou recuperar senha
-  devise :database_authenticatable, :rememberable, :validatable
-  validates :email, presence: true
-  validates :email, uniqueness: true
-
-end
-```
-
-
-```
-# /config/initializers/rails_admin.rb
-
-## == Devise ==
-config.authenticate_with do
-  warden.authenticate! scope: :user
-end
-config.current_user_method(&:current_user)
-```
-
-- Criando seeds para os usuários
-
-```
-# /db/seeds.rb
-
-User.create admin: true, email: 'gabrielbdornas@gmail.com', password: 123456, password_confirmation:123456
-
-```
-
-```
-terminal
-
-$ rails db:create db:migrate db:seed # utilizar db:drop caso já haja algum banco criado (não necessário se for a primeira vez)
-```
-
-- gem cancancan para permissões
-
-```
-# Gemfile
-
-gem 'cancancan', '~> 1.15.0'
-```
-
-```
-# terminal
-
-$ bundle
-$ rails g cancan:ability
-```
-
-```
-# rails_admin initializer
-
-# /config/initializers/rails_admin.rb
-
-## == Cancan ==
-config.authorize_with :cancan
-```
-
-- Cadastrando primeiras restrições
-
-```
-class Ability
-  include CanCan::Ability
-
-  def initialize(user)
-    if user
-      if user.admin == false
-        # https://stackoverflow.com/questions/44497687/a-gem-cancan-access-denied-maincontroller-dashboard?answertab=votes#tab-top
-        can :dashboard, :all
-        can :access, :rails_admin
-        can :read, :dashboard
-        can :read, User, id: user.id
-        can :update, User, id: user.id
-        # can :manage, ModelName, user: user
-      elsif user.admin == true
-        can :manage, :all
-      end
-    end
-  end
-end
-```
-
-[x] Períodos
-
-```
-# aplication_helper
-
-module ApplicationHelper
-
-  def date_between
-    # https://stackoverflow.com/questions/925905/is-it-possible-to-create-a-list-of-months-between-two-dates-in-rails
-    initial_date = Date.parse("2020-08-01")
-    final_date = Date.parse("#{Time.new.year}-#{Time.new.month}-#{Time.new.day}")
-    date_between_range = []
-    Date.months_between(initial_date,final_date).to_a.each do |date|
-      date_between_range << "#{date.month}/#{date.year}"
-    end
-    date_between_range
-  end
-end
-```
-
-obs.: utilizar ApplicationController.helpers.date_between para chamar o array criado
-
-
-[x] Customizando nome do app
-
-```
-initializers/rails_admin config file
-
-config.main_app_name = ["Colocar Aqui", "| Nome do App"]
-```
-
-[x] Acrescentando links personalizados
-
-```
-initializers/rails_admin config file
-
-config.navigation_static_links = {
-  'Links' => 'https://google.com' # COLOCAR LINK DESEJADO
-}
-
-config.navigation_static_label = "Lins Úteis"
-```
-
-[x] Implementando Tradução da ferramenta
-
-```
-arquivos config/enviroments/production e development
-
-config.i18n.enforce_available_locales = false
-config.i18n.available_locales = ["pt-BR"]
-config.i18n.default_locale = :'pt-BR'
-```
-
-criação dos arquivos enviroments/locales/pt-BR.yml e enviroments/locales/devise.pt-BR.yml (prestar atenção no padrão para escrever o nome dos models. Sempre traduzir o nome dos atributos aqui e não na configuração de cada model)
-
-[x] Personalizando a disposição dos itens no menu lateral
-
-```
-Para configuração dentro do próprio model
-
-rails_admin do
-    weight -1
-end
-```
-
-[x] Trocando o padrão visual do template
-
-Instalação de nova gem - https://github.com/rollincode/rails_admin_theme
-
+# Referência sobre a criação deste app
+
+Referências sobre a criação deste app, incluindo versões Ruby e Rails estão disponíveis no arquivo especificacoes_ruby_on_rails.md
+
+# Automatização Classificações de Acesso Portal da Transparência MG
+
+## Exportação arquivo Google Analytics
+1. Acessar [Google Analytics](https://analytics.google.com/) (necessário já estar com acesso. liberado a informações do [Portal da Transparência](http://www.transparencia.mg.gov.br/)).
+2. Na barra de opções superior selecionar o site desejado (Todos os dados do website).
+3. No menu lateral esquerdo acessar Comportamento>Conteúdo do Site>Página de Destino.
+4. Selecione o período desejado na aba lateral direita (Não esqueça de "Aplicar" as modificações).
+5. Vá para o final da página e selecione a opção para exibir 5.000 linhas por vez:
+    * Observe o número de registros do relatório para prever o número de exportações necessárias; e
+    * São gerados, em média 25.000 registros mês, exigindo, portanto a exportação do relatório aprximadamente 5 vezes.
+6. Volte para o início da página e clique na opção Exportar>Planilha Google.
+7. Renomei o arquivo exportado no padrao mes_ano_versao, exemplo:
+    * Primeiro relatório de Março de 2021: 3_2021_1;
+    * Quinto relatório de Janeiro de 2020: 1_2020_5; e
+    * Segundo relatório de Novembro de 2021: 11_2021_2.
+    * Observações:
+        * Não é necessário incluir o dígito 0 nos meses entre janeiro e setembro;
+        * Separação entre mes, ano e versão deverá ser feito com [underscore](https://pt.wikipedia.org/wiki/Sublinhado); e
+        * Caso padrão do nome não seja seguido corretamente a classificação poderá não ocorrer corretamente
+8. Mova o arquivo exportado para pasta Google Drive correta da DTA - [Portal_Transparencia_Indicadores do Portal](https://drive.google.com/drive/folders/15KuJy3qSzsi9fVAsxrnCmlr_TNUR6iyG?usp=sharing). Observe a necessidade de criação de supastas ano/mês para armazenamento correto do arquivo.
+
+## Exportação arquivo .csv a partir do Google Sheets
+1. Duplicar a aba gerada no arquivo Google Sheets (não será necessário renomear a nova aba criada
+)
+2. Apagar todas as linhas superiores até a linha aonde se iniciar o primeiro registro.
+3. Apagar todas as linhas inferiores até a linha do último registro.
+4. Inserir uma coluna em branco do lado esquerdo da coluna "A" (nova coluna a criada deverá ficar em branco).
+5. Colocar em todas as células da nova consulta cridada o nome do arquivo, seguindo o mesmo padrão de nomenclatura sugerido no item 7 do tópico anterior.
+    * Dica: Copie e cole o nome do arquivo já modificado.
+6. No menu superior direito Google Sheets acesse Arquivo>Download>.csv
+
+## Realização classificação automática
+1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
+  * Caso não possua login e senha solicitar via e-mail para gabriel.dornas@cge.mg.gov.br
+2. No menu lateral esquerdo selecione Links Úteis>Arquivo Google Analytics
+  * Ao clicar uma nova aba será aberta com a url - https://transparencia-google-analytics.herokuapp.com/importations/new
+    * Caso alguma mensagem de erro ocorra copie e cole a url acima
+3. Selecione o arquivo .csv gerado na etapa acima clicando no botão "Choose File"
+4. Com arquivo selecionado e clique no botão "Importar Arquivos"
+5. Novo arquivo .csv será exportado via Browser COM A CLASSIFICAÇÃO REALIZADA
+  * O consolidado dos arquivos gerados após a classificação deverá ser incluído no repositório https://github.com/dados-mg/google-analytics/tree/master/data
+
+## Aprimorando o cadastro De-para
+1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
+  * Caso não possua login e senha solicitar via e-mail para gabriel.dornas@cge.mg.gov.br
+2. No menu lateral esquerdo selecione Navegação>Classificação de URLs
+3. Selecione a opção "Criar Novo" e inclua a URL e sua classificação no formulário. Não esqueça de selecionar o botão "Gravar"
+  * Não incluir a barra "/" no início do cadastro da url
+
+
+
+## Dúvidas
+- Formatação arquivo .csv exportado
+  - "" em string?
+  - campos % pode converter para integer (colocar . e retirar %) para explicar do datapackage o tipo de campo?
