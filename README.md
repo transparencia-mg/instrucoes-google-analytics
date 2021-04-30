@@ -26,6 +26,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 )
 2. Apagar todas as linhas superiores até a linha aonde se iniciar o primeiro registro.
 3. Apagar todas as linhas inferiores até a linha do último registro.
+4. Exportar o resultado deste trabalho em um arquivo .csv
 
 ## Realização classificação automática
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
