@@ -28,7 +28,7 @@ class ImportationsController < ApplicationController
                   duracao-sessao
                   )
         CSV.foreach(params[:file].path) do |row|
-          url_imported_array = row[1].split('/').reject(&:blank?)
+          url_imported_array = row[0].split('/').reject(&:blank?)
           csv << ["portal",
                   file_path.split('-')[4].to_i,
                   classification(url_imported_array, url_classified_array),
