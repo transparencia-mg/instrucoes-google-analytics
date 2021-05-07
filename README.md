@@ -12,8 +12,8 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 5. Vá para o final da página e selecione a opção para exibir 5.000 linhas por vez:
     * Observe o número de registros do relatório para prever o número de exportações necessárias; e
     * São gerados, em média 25.000 registros mês, exigindo, portanto a exportação do relatório aprximadamente 5 vezes.
-6. Volte para o início da página e clique na opção Exportar>Planilha Google.
-7. Renomei o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv", exemplo:
+6. Volte para o início da página e clique na opção Exportar>Planilha Google. OUtra opção é exportar como csv para o prórprio HD.
+7. Renomeie o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv", exemplo:
     * Primeiro relatório de Março de 2021: portal-paginas-destino-2021-03-01.csv;
     * Quinto relatório de Janeiro de 2020: portal-paginas-destino-2020-01-05.csv; e
     * Segundo relatório de Novembro de 2021: portal-paginas-destino-2021-11-02.csv.
@@ -38,7 +38,15 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 4. Com arquivo selecionado e clique no botão "Importar Arquivos"
 5. Novo arquivo .csv será exportado via Browser COM A CLASSIFICAÇÃO REALIZADA
   * Entre a importação e classificação de um arquivo para outro é necessário atualizar a página
-6. Ao final da classificação de todos os arquivos do mês unifica-los para inclusão no repositório https://github.com/dados-mg/google-analytics/tree/master/data
+
+## Unificação dos arquivos, ajustes, validação e publicação
+6. Ao final da classificação de todos os arquivos do mês: 
+    6.1. unificá-los em uma única planilha
+    6.2. alterar a formatação das colunas ``Porcentagem de Novas Sessões`` e ``Taxa de Rejeição`` de porcentagem para número, 
+    6.3. rodar a validação interna do pacote frictionless.py e corrigir eventuais inconsistências
+7. fazer a inclusão no repositório https://github.com/dados-mg/google-analytics/tree/master/data
+    
+
   * Padrão da nomenclatura:
 
      - propriedade PORTAL: "portal-paginas-destino-AAAA-MM.csv";
