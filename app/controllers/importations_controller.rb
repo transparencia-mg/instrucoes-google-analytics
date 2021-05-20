@@ -27,7 +27,7 @@ class ImportationsController < ApplicationController
                   paginas-sessao
                   duracao-sessao
                   )
-        CSV.foreach(params[:file].path, col_sep: ';') do |row|
+        CSV.foreach(params[:file].path, col_sep: ';', quote_char: '"') do |row|
           url_imported_array = row[0].split('/').reject(&:blank?)
           csv << ["portal",
                   file_path.split('-')[4].to_i,
