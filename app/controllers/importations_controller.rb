@@ -29,17 +29,29 @@ class ImportationsController < ApplicationController
                   )
         CSV.foreach(params[:file].path, col_sep: ';', quote_char: '"') do |row|
           url_imported_array = row[0].split('/').reject(&:blank?)
-          csv << ["portal",
-                  file_path.split('-')[4].to_i,
+          csv << [file_path.split('-')[0], # Busca portal ou ckan como propriedade
+                  file_path.split('-')[4].to_i, # Busca o mês
                   classification(url_imported_array, url_classified_array),
                   row[0],
-                  row[1],
-                  row[2],
-                  row[3],
-                  row[4],
+                  row[1].split('.').join, # Retirar o ponto quando número for muito grande
+                  row[2].split("%")[0],
+                  row[3].split('.').join, # Retirar o ponto quando número for muito grande
+                  row[4].split("%")[0],
                   row[5],
                   row[6]
                 ]
+          # arrumar arquivos 2020 e 2021 comentar códigos acima
+          # csv << [row[0],
+          #         row[1],
+          #         row[2],
+          #         row[3],
+          #         row[4].split('.').join,
+          #         row[5].split("%")[0],
+          #         row[6].split('.').join,
+          #         row[7].split("%")[0],
+          #         row[8],
+          #         row[9]
+          #                 ]
         end
       end
       redirect_to export_path(file_path: file_path)
