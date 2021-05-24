@@ -30,6 +30,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 4. Apagar as 3 colunas mais à direita
 5. Exportar o resultado deste trabalho em um arquivo .csv
     - Nome do arquivo exportado não deverá ser modificado
+    - Vírgula (",") deverá ser o caracter de separação de colunas do arquivo exportado, caso contrário classificação automática descrita abaixo irá apresentar erro. Google sheets já faz a exportação com este padrão, mas vale conferir!
 
 ## Realização classificação automática
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
