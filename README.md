@@ -1,6 +1,6 @@
 # Referência sobre a criação deste app
 
-Referências sobre a criação deste app, incluindo versões Ruby e Rails estão disponíveis no arquivo especificacoes_ruby_on_rails.md
+Referências sobre a criação deste app, incluindo versões Ruby e Rails estão disponíveis no arquivo [especificacoes_ruby_on_rails.md](/especificacoes_ruby_on_rails.md)
 
 # Automatização Classificações de Acesso Portal da Transparência MG
 
