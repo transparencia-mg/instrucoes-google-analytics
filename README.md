@@ -6,27 +6,30 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 
 ## Exportação arquivo Google Analytics
 1. Acessar [Google Analytics](https://analytics.google.com/) (necessário já estar com acesso. liberado a informações do [Portal da Transparência](http://www.transparencia.mg.gov.br/)).
-2. Na barra de opções superior selecionar o site desejado (Todos os dados do website).
-3. No menu lateral esquerdo acessar Comportamento>Conteúdo do Site>Página de Destino.
-4. Selecione o período desejado na aba lateral direita (Não esqueça de "Aplicar" as modificações).
-5. Vá para o final da página e selecione a opção para exibir 5.000 linhas por vez:
-    * Observe o número de registros do relatório para prever o número de exportações necessárias; e
-    * São gerados, em média 25.000 registros mês, exigindo, portanto a exportação do relatório aprximadamente 5 vezes.
-6. Volte para o início da página e clique na opção Exportar>Planilha Google. OUtra opção é exportar como csv para o prórprio HD.
-7. Renomeie o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv", exemplo:
-    * Primeiro relatório de Março de 2021: portal-paginas-destino-2021-03-01.csv;
-    * Quinto relatório de Janeiro de 2020: portal-paginas-destino-2020-01-05.csv; e
-    * Segundo relatório de Novembro de 2021: portal-paginas-destino-2021-11-02.csv.
+2. Na barra de opções superior selecionar o site desejado (ckan ou portal da transparência) > Todos os dados do website.
+4. No menu lateral esquerdo acessar Comportamento>Conteúdo do Site>Página de Destino.
+5. Selecione o período desejado na aba lateral direita (Não esqueça de "Aplicar" as modificações).
+6. Vá para o final da página e selecione a opção para exibir 5.000 linhas por vez:
+    * Observe o número de registros do relatório para prever o número de exportações necessárias;
+    * São gerados, em média 25.000 registros mês para o PORTAL, exigindo, portanto a exportação do relatório aprximadamente 5 vezes.
+    * Ckan com menos de 1.000 registros durante elaboração deste tutorial
+7. Volte para o início da página e clique na opção Exportar>Planilha Google. 
+8. Renomeie o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv" ou "ckan-paginas-destino-AAAA-MM-VERSAO", exemplo:
+    * Primeiro relatório do ckan de Março de 2021: ckan-paginas-destino-2021-03-01.csv;
+    * Quinto relatório do portal de Janeiro de 2020: portal-paginas-destino-2020-01-05.csv; e
+    * Segundo relatório do portal de Novembro de 2021: portal-paginas-destino-2021-11-02.csv.
     * Observações:
         * Caso padrão do nome não seja seguido corretamente a classificação poderá não ocorrer corretamente
+        * geralmente o CKAN não passa de um relatório, atualmente; entretanto, pode vir a ter mais de uma planilha de 5 mil linhas, assim como o Portal, a depender do aumento do número de acessos mensais
+        
 8. Mova o arquivo exportado para pasta Google Drive correta da DTA - [Portal_Transparencia_Indicadores do Portal](https://drive.google.com/drive/folders/15KuJy3qSzsi9fVAsxrnCmlr_TNUR6iyG?usp=sharing). Observe a necessidade de criação de supastas ano/mês para armazenamento correto do arquivo.
 
 ## Exportação arquivo .csv a partir do Google Sheets
-1. Duplicar a aba gerada no arquivo Google Sheets (não será necessário renomear a nova aba criada
-)
-2. Apagar todas as linhas superiores até a linha aonde se iniciar o primeiro registro.
-3. Apagar todas as linhas inferiores até a linha do último registro.
-4. Exportar o resultado deste trabalho em um arquivo .csv
+1. Apagar todas as linhas superiores incluindo a linha de cabeçalho (primeira linha deverá ser a correspondente ao primeiro registro).
+3. Apagar todas as linhas inferiores desde a linha do último registro (totais).
+4. Apagar as 3 colunas mais à direita
+5. Exportar o resultado deste trabalho em um arquivo .csv
+    - Nome do arquivo exportado não deverá ser modificado
 
 ## Realização classificação automática
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
