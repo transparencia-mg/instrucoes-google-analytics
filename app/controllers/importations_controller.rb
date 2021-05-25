@@ -36,24 +36,27 @@ class ImportationsController < ApplicationController
                   classification(url_imported_array, url_classified_array, property),
                   row[0],
                   row[1].split('.').join, # Retirar o ponto quando número for muito grande
-                  row[2].split("%")[0],
+                  (row[2].split("%")[0].to_f/100).to_s.sub(".", ","), # row[2].split("%")[0] e transforma em número decimal
                   row[3].split('.').join, # Retirar o ponto quando número for muito grande
-                  row[4].split("%")[0],
+                  (row[4].split("%")[0].to_f/100).to_s.sub(".", ","), # row[4].split("%")[0] e transforma em número decimal
                   row[5],
                   row[6].split("<").last
                 ]
-          # arrumar arquivos 2020 e 2021 comentar códigos acima
-          # csv << [row[0],
-          #         row[1],
-          #         row[2],
-          #         row[3],
-          #         row[4].split('.').join,
-          #         row[5].split("%")[0],
-          #         row[6].split('.').join,
-          #         row[7].split("%")[0],
-          #         row[8],
-          #         row[9]
-          #                 ]
+        # arrumar arquivos 2020 e 2021 comentar códigos acima
+        # count = 0
+        # CSV.foreach(params[:file].path, col_sep: ';', quote_char: '"') do |row|
+        #   csv << [row[0],
+        #           row[1],
+        #           row[2],
+        #           row[3],
+        #           row[4].split('.').join,
+        #           (row[5].split("%")[0].to_f/100).to_s.sub(".", ","),
+        #           row[6].split('.').join,
+        #           (row[7].split("%")[0].to_f/100).to_s.sub(".", ","),
+        #           row[8],
+        #           row[9]
+        #         ] if count > 0
+        #         count += 1
         end
       end
       redirect_to export_path(file_path: file_path)
