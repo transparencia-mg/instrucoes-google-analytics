@@ -33,7 +33,7 @@ class ImportationsController < ApplicationController
           url_imported_array = imported_array(row, property)
           csv << [property,
                   file_path.split('-')[4].to_i, # Busca o mês
-                  classification(url_imported_array, url_classified_array),
+                  classification(url_imported_array, url_classified_array, property),
                   row[0],
                   row[1].split('.').join, # Retirar o ponto quando número for muito grande
                   row[2].split("%")[0],
@@ -78,20 +78,36 @@ class ImportationsController < ApplicationController
     url_array_classification
   end
 
-  def classification(imported_url, classified_url)
+  def classification(imported_url, classified_url, property)
     classification_description = ''
-    # Último && evita erros no código
-    if classified_url.include?(imported_url.first(3).last) && !UrlClassification.where(url:imported_url[0..2].join('/')).first.nil?
-      # o último iten (após "/") das urls classificadas tem que ser igual ao terceiro item
-      # (após "/") da url importada
-      classification_description = UrlClassification.where(url:imported_url[0..2].join('/')).first.classification
-    elsif classified_url.include?(imported_url.first.split('?').first)
-      # classificação Busca - possui link diferente - separado por "?"
-      classification_description = UrlClassification.where(url:imported_url.first.split('?').first).first.classification
-    elsif imported_url.first == 'banco-de-noticias'
-      classification_description = UrlClassification.where(url:'banco-de-noticias').first.classification
-    else
-      classification_description = 'Outros'
+    if property == "portal"
+      # Último && evita erros no código
+      if classified_url.include?(imported_url.first(3).last) && !UrlClassification.where(url:imported_url[0..2].join('/')).first.nil?
+        # o último iten (após "/") das urls classificadas tem que ser igual ao terceiro item
+        # (após "/") da url importada
+        classification_description = UrlClassification.where(url:imported_url[0..2].join('/')).first.classification
+      elsif classified_url.include?(imported_url.first.split('?').first)
+        # classificação Busca - possui link diferente - separado por "?"
+        classification_description = UrlClassification.where(url:imported_url.first.split('?').first).first.classification
+      elsif imported_url.first == 'banco-de-noticias'
+        classification_description = UrlClassification.where(url:'banco-de-noticias').first.classification
+      else
+        classification_description = 'Outros'
+      end
+    elsif property == "ckan"
+      # Último && evita erros no código
+      if classified_url.include?(imported_url.first(3).last) && !UrlClassification.where(url:imported_url[0..2].join('/')).first.nil?
+        # o último iten (após "/") das urls classificadas tem que ser igual ao terceiro item
+        # (após "/") da url importada
+        classification_description = UrlClassification.where(url:imported_url[0..2].join('/')).first.classification
+      elsif imported_url.first == 'user'
+        classification_description = 'Usuário'
+      elsif classified_url.include?(imported_url.first.split('?').first)
+        # classificação Busca - possui link diferente - separado por "?"
+        classification_description = UrlClassification.where(url:imported_url.first.split('?').first).first.classification
+      else
+        classification_description = 'Outros'
+      end
     end
     classification_description
   end
