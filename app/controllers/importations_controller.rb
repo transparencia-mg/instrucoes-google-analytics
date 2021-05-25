@@ -38,7 +38,7 @@ class ImportationsController < ApplicationController
                   row[3].split('.').join, # Retirar o ponto quando número for muito grande
                   row[4].split("%")[0],
                   row[5],
-                  row[6]
+                  row[6].split("<").last
                 ]
           # arrumar arquivos 2020 e 2021 comentar códigos acima
           # csv << [row[0],
