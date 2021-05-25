@@ -13,6 +13,7 @@ class ImportationsController < ApplicationController
     if params[:file].nil?
       redirect_to importations_new_path
     else
+      delete_csv_files
       file_path = params[:file].original_filename.split(' - ')[0].strip
       url_classified_array = url_objets_to_classifications_array(UrlClassification.all.to_a)
       CSV.open(file_path, 'a+') do |csv|
@@ -28,8 +29,9 @@ class ImportationsController < ApplicationController
                   duracao-sessao
                   )
         CSV.foreach(params[:file].path, col_sep: ',', quote_char: '"') do |row|
-          url_imported_array = row[0].split('/').reject(&:blank?)
-          csv << [file_path.split('-')[0], # Busca portal ou ckan como propriedade
+          property = file_path.split('-')[0] # Busca portal ou ckan como propriedade
+          url_imported_array = imported_array(row, property)
+          csv << [property,
                   file_path.split('-')[4].to_i, # Busca o mês
                   classification(url_imported_array, url_classified_array),
                   row[0],
@@ -56,6 +58,16 @@ class ImportationsController < ApplicationController
       end
       redirect_to export_path(file_path: file_path)
     end
+  end
+
+  def imported_array(row, property)
+    url_imported_array = []
+    if property == "ckan" && row[0].split('/').reject(&:blank?).count == 0
+      url_imported_array = ["dados.mg.gov.br"]
+    else
+      url_imported_array = row[0].split('/').reject(&:blank?)
+    end
+      url_imported_array
   end
 
   def url_objets_to_classifications_array(url_array)
@@ -98,6 +110,13 @@ class ImportationsController < ApplicationController
       CSV.foreach(file_path) do |row|
         csv << row
       end
+    end
+  end
+
+  def delete_csv_files
+    all_csv_files = Dir.glob "./*.csv"
+    all_csv_files.each do |file|
+      File.delete(file)
     end
   end
 
