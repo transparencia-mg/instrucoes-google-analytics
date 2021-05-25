@@ -53,6 +53,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
          - propriedade CKAN: "ckan-paginas-destino-AAA-MM.csv"
 
 7. Incluir o novo arquivo na pasta [data do repositório]( https://github.com/dados-mg/google-analytics/tree/master/data)
+  - É interessante observar para o arquivo unificado o percentual de codificação de-para igual a "Outros" em relação ao total classificado. Um percentual grande (>10%) pode indicar a necessidade do aprimoramento do castro De-para (descrito abaixo)
 8. Fazer a inclusão do novo recurso no arquivo [datapackage.json](https://github.com/dados-mg/google-analytics/blob/master/datapackage.json)
 9. Seguir as orientações do arquivo [README.md](https://github.com/dados-mg/google-analytics/blob/master/README.md) para validar o novo arquivo incluído, juntamente com o datapackage revisado
 
@@ -61,7 +62,7 @@ $ frictionless validate datapackage.json
 ```
 
 10. Realizar o push com as atualizações do conjunto para o [github](https://github.com/dados-mg/google-analytics) seguindo [fluxo de trabalho em repositórios github](https://github.com/transparencia-mg/handbook/blob/master/fluxo-trabalho-github.md)
-    
+
 
 ## Aprimorando o cadastro De-para
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
@@ -69,3 +70,4 @@ $ frictionless validate datapackage.json
 2. No menu lateral esquerdo selecione Navegação>Classificação de URLs
 3. Selecione a opção "Criar Novo" e inclua a URL e sua classificação no formulário. Não esqueça de selecionar o botão "Gravar"
   * Não incluir a barra "/" no início do cadastro da url
+
