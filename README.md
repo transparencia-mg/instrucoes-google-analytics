@@ -27,10 +27,12 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 ## Exportação arquivo .csv a partir do Google Sheets
 1. Apagar todas as linhas superiores incluindo a linha de cabeçalho (primeira linha deverá ser a correspondente ao primeiro registro).
 3. Apagar todas as linhas inferiores desde a linha do último registro (totais).
-4. Apagar as 3 colunas mais à direita
-5. Exportar o resultado deste trabalho em um arquivo .csv
+4. Reformatar as colunas C () e E () para ``número`` (0,37) em vez de ``porcentagem`` (37%)
+5. **na hipótese de exportar para csv direto na máquina (CUIDADO!!)**: Verificar se há separadores de colunas (vírgula ou ponto-e-vírgula) como caracteres nos valores da coluna da URL (ex.: ``/dataset?q=&tags=coronavirus&sort=score+desc,+metadata_modified+desc``); após corrigir esse escaping,
+6. Apagar as 3 colunas mais à direita (**não faça esse item sem ter checado o anterior**)
+7. Exportar o resultado deste trabalho em um arquivo .csv
     - Nome do arquivo exportado não deverá ser modificado
-    - Vírgula (",") deverá ser o caracter de separação de colunas do arquivo exportado, caso contrário classificação automática descrita abaixo irá apresentar erro. Google sheets já faz a exportação com este padrão, mas vale conferir!
+    - Vírgula (",") deverá ser o caracter de separação de colunas do arquivo exportado, caso contrário classificação automática descrita abaixo irá apresentar erro. Google sheets já faz a exportação com este padrão, mas vale conferir (vide itens 5 e 6)!
 
 ## Realização classificação automática
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
@@ -44,17 +46,23 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
   * Entre a importação e classificação de um arquivo para outro é necessário atualizar a página
 
 ## Unificação dos arquivos, ajustes, validação e publicação
-6. Ao final da classificação de todos os arquivos do mês: 
-    6.1. unificá-los em uma única planilha
-    6.2. alterar a formatação das colunas ``Porcentagem de Novas Sessões`` e ``Taxa de Rejeição`` de porcentagem para número, 
-    6.3. rodar a validação interna do pacote frictionless.py e corrigir eventuais inconsistências
-7. fazer a inclusão no repositório https://github.com/dados-mg/google-analytics/tree/master/data
+6. Ao final da classificação de todos os arquivos do mês unificá-los em uma única planilha
+
+    * Padrão da nomenclatura:
+
+         - propriedade PORTAL: "portal-paginas-destino-AAAA-MM.csv";
+         - propriedade CKAN: "ckan-paginas-destino-AAA-MM.csv"
+
+7. Incluir o novo arquivo na pasta [data do repositório]( https://github.com/dados-mg/google-analytics/tree/master/data)
+8. Fazer a inclusão do novo recurso no arquivo [datapackage.json](https://github.com/dados-mg/google-analytics/blob/master/datapackage.json)
+9. Seguir as orientações do arquivo [README.md](https://github.com/dados-mg/google-analytics/blob/master/README.md) para validar o novo arquivo incluído, juntamente com o datapackage revisado
+
+```
+$ frictionless validate datapackage.json
+```
+
+10. Realizar o push com as atualizações do conjunto para o [github](https://github.com/dados-mg/google-analytics) seguindo [fluxo de trabalho em repositórios github](https://github.com/transparencia-mg/handbook/blob/master/fluxo-trabalho-github.md)
     
-
-  * Padrão da nomenclatura:
-
-     - propriedade PORTAL: "portal-paginas-destino-AAAA-MM.csv";
-     - propriedade CKAN: "ckan-paginas-destino-AAA-MM.csv"
 
 ## Aprimorando o cadastro De-para
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
