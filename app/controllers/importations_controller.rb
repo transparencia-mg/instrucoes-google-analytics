@@ -19,14 +19,14 @@ class ImportationsController < ApplicationController
       CSV.open(file_path, 'a+') do |csv|
         csv << %w(propriedade
                   mes
-                  pagina-destino
+                  pagina_destino
                   URL
                   sessoes
-                  novas-sessoes-porcentagem
-                  usuarios-novos
-                  taxa-rejeicao
-                  paginas-sessao
-                  duracao-sessao
+                  novas-sessoes_porcentagem
+                  usuarios_novos
+                  taxa_rejeicao
+                  paginas_sessao
+                  duracao_sessao
                   )
         CSV.foreach(params[:file].path, col_sep: ',', quote_char: '"') do |row|
           property = file_path.split('-')[0] # Busca portal ou ckan como propriedade
