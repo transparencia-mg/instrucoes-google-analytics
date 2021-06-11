@@ -14,7 +14,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
     * São gerados, em média 25.000 registros mês para o PORTAL, exigindo, portanto a exportação do relatório aprximadamente 5 vezes.
     * Ckan com menos de 1.000 registros durante elaboração deste tutorial
 7. Volte para o início da página e clique na opção Exportar>Planilha Google. 
-8. Renomeie o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv" ou "ckan-paginas-destino-AAAA-MM-VERSAO", exemplo:
+8. A depender da instância trabalhada no momento, renomeie o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv" ou "ckan-paginas-destino-AAAA-MM-VERSAO", exemplo:
     * Primeiro relatório do ckan de Março de 2021: ckan-paginas-destino-2021-03-01.csv;
     * Quinto relatório do portal de Janeiro de 2020: portal-paginas-destino-2020-01-05.csv; e
     * Segundo relatório do portal de Novembro de 2021: portal-paginas-destino-2021-11-02.csv.
