@@ -17,17 +17,17 @@ class ImportationsController < ApplicationController
       file_path = params[:file].original_filename.split(' - ')[0].strip
       url_classified_array = url_objets_to_classifications_array(UrlClassification.all.to_a)
       CSV.open(file_path, 'a+') do |csv|
-        csv << %w(propriedade
-                  mes
-                  pagina_destino
-                  URL
-                  sessoes
-                  novas-sessoes_porcentagem
-                  usuarios_novos
-                  taxa_rejeicao
-                  paginas_sessao
-                  duracao_sessao
-                  )
+        # csv << %w(propriedade
+        #           mes
+        #           pagina_destino
+        #           URL
+        #           sessoes
+        #           novas-sessoes_porcentagem
+        #           usuarios_novos
+        #           taxa_rejeicao
+        #           paginas_sessao
+        #           duracao_sessao
+        #           )
         CSV.foreach(params[:file].path, col_sep: ',', quote_char: '"') do |row|
           property = file_path.split('-')[0] # Busca portal ou ckan como propriedade
           url_imported_array = imported_array(row, property)
