@@ -14,7 +14,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
     * São gerados, em média 25.000 registros mês para o PORTAL, exigindo, portanto a exportação do relatório aprximadamente 5 vezes.
     * Ckan com menos de 1.000 registros durante elaboração deste tutorial
 7. Volte para o início da página e clique na opção Exportar>Planilha Google. 
-8. Renomeie o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv" ou "ckan-paginas-destino-AAAA-MM-VERSAO", exemplo:
+8. A depender da instância trabalhada no momento, renomeie o arquivo exportado no padrao "portal-paginas-destino-AAAA-MM-VERSAO.csv" ou "ckan-paginas-destino-AAAA-MM-VERSAO", exemplo:
     * Primeiro relatório do ckan de Março de 2021: ckan-paginas-destino-2021-03-01.csv;
     * Quinto relatório do portal de Janeiro de 2020: portal-paginas-destino-2020-01-05.csv; e
     * Segundo relatório do portal de Novembro de 2021: portal-paginas-destino-2021-11-02.csv.
@@ -28,7 +28,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 1. Apagar todas as linhas superiores incluindo a linha de cabeçalho (primeira linha deverá ser a correspondente ao primeiro registro).
 3. Apagar todas as linhas inferiores desde a linha do último registro (totais).
 4. **na hipótese de exportar para csv direto na máquina (CUIDADO!!)**: Verificar se há separadores de colunas (vírgula ou ponto-e-vírgula) como caracteres nos valores da coluna da URL (ex.: ``/dataset?q=&tags=coronavirus&sort=score+desc,+metadata_modified+desc``); após corrigir esse escaping,
-5. Apagar as 3 colunas mais à direita (**não faça esse item sem ter checado o anterior**)
+5. Apagar as 3 colunas mais à direita (**não faça esse item sem ter checado o anterior**). A última coluna remanescente mais à direita deverá ser a do tempo da sessão.
 6. Exportar o resultado deste trabalho em um arquivo .csv
     - Nome do arquivo exportado não deverá ser modificado
     - Vírgula (",") deverá ser o caracter de separação de colunas do arquivo exportado, caso contrário classificação automática descrita abaixo irá apresentar erro. Google sheets já faz a exportação com este padrão, mas vale conferir (vide itens 5 e 6)!
