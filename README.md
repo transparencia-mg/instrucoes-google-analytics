@@ -28,7 +28,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 1. Apagar todas as linhas superiores incluindo a linha de cabeçalho (primeira linha deverá ser a correspondente ao primeiro registro).
 3. Apagar todas as linhas inferiores desde a linha do último registro (totais).
 4. **na hipótese de exportar para csv direto na máquina (CUIDADO!!)**: Verificar se há separadores de colunas (vírgula ou ponto-e-vírgula) como caracteres nos valores da coluna da URL (ex.: ``/dataset?q=&tags=coronavirus&sort=score+desc,+metadata_modified+desc``); após corrigir esse escaping,
-5. Apagar as 3 colunas mais à direita (**não faça esse item sem ter checado o anterior**). A última coluna remanescente mais à direita deverá ser a do tempo da sessão.
+5. Apagar as 3 colunas mais à direita (**não faça esse item sem ter checado o anterior**). A última coluna remanescente mais à direita deverá ser a "G", que corresponde ao tempo da sessão (formato hh:mm:ss).
 6. Exportar o resultado deste trabalho em um arquivo .csv
     - Nome do arquivo exportado não deverá ser modificado
     - Vírgula (",") deverá ser o caracter de separação de colunas do arquivo exportado, caso contrário classificação automática descrita abaixo irá apresentar erro. Google sheets já faz a exportação com este padrão, mas vale conferir (vide itens 5 e 6)!
