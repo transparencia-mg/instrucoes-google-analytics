@@ -52,6 +52,8 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
          - propriedade PORTAL: "portal-paginas-destino-AAAA-MM.csv";
          - propriedade CKAN: "ckan-paginas-destino-AAA-MM.csv"
 
+     * sugestão: utilizar o comando `$ awk '(NR == 1) || (FNR > 1)' *.csv > portal-paginas-destino-AAAA-MM.csv` na `bash` da pasta onde estiverem salvos os arquivos csv 
+
 7. Incluir o novo arquivo na pasta [data do repositório]( https://github.com/dados-mg/google-analytics/tree/master/data)
   - É interessante observar para o arquivo unificado o percentual de codificação de-para igual a "Outros" em relação ao total classificado. Um percentual grande (>10%) pode indicar a necessidade do aprimoramento do castro De-para (descrito abaixo)
 8. Fazer a inclusão do novo recurso no arquivo [datapackage.json](https://github.com/dados-mg/google-analytics/blob/master/datapackage.json)
