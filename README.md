@@ -53,7 +53,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
          
      * sugestão: utilizar o comando `$ awk '(NR == 1) || (FNR > 1)' *.csv > portal-paginas-destino-AAAA-MM.csv` na `bash` da pasta onde estiverem salvos os arquivos csv (para este comando funcionar, a pasta deve conter somente os arquivos referentes à propriedade PORTAL, e pelo menos um deles deve conter o cabeçalho `propriedade;mes;pagina_destino;URL;sessoes;novas_sessoes_porcentagem;usuarios_novos;taxa_rejeicao;paginas_sessao;duracao_sessao`
 
-7. Incluir o novo arquivo na pasta [data do repositório]( https://github.com/dados-mg/google-analytics/tree/master/data)
+7. Incluir o novo arquivo na pasta data do repositório [dados-mg/google-analytics]( https://github.com/dados-mg/google-analytics/tree/master/data)
   - É interessante observar para o arquivo unificado o percentual de codificação de-para igual a "Outros" em relação ao total classificado. Um percentual grande (>10%) pode indicar a necessidade do aprimoramento do castro De-para (descrito abaixo)
 8. Fazer a inclusão do novo recurso no arquivo [datapackage.json](https://github.com/dados-mg/google-analytics/blob/master/datapackage.json)
 9. Seguir as orientações do arquivo [README.md](https://github.com/dados-mg/google-analytics/blob/master/README.md) para validar o novo arquivo incluído, juntamente com o datapackage revisado
