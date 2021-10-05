@@ -47,9 +47,13 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 ## Unificação dos arquivos, ajustes, validação e publicação
 6. Ao final da classificação de todos os arquivos da propriedade PORTAL, salvá-los numa pasta transitória de nome `raw/` no repositório https://github.com/dados-mg/google-analytics e unificá-los em uma única planilha da forma como segue:
 
+* **modo provisório**: utilizar o comando `$ awk '(NR == 1) || (FNR > 1)' *.csv > portal-paginas-destino-AAAA-MM.csv` na `bash` da pasta onde estiverem salvos os arquivos csv (para este comando funcionar, a pasta deve conter somente os arquivos referentes à propriedade PORTAL, e pelo menos um deles deve conter o cabeçalho `propriedade;mes;pagina_destino;URL;sessoes;novas_sessoes_porcentagem;usuarios_novos;taxa_rejeicao;paginas_sessao;duracao_sessao
+
+* **modo a ser implementado**:
+
     * na bash aberta na raiz do repositório https://github.com/dados-mg/google-analytics, digitar `make unify_resource` 
     * para este comando funcionar, a pasta deve conter somente os arquivos referentes à propriedade PORTAL, e pelo menos um deles deve conter o cabeçalho `propriedade;mes;pagina_destino;URL;sessoes;novas_sessoes_porcentagem;usuarios_novos;taxa_rejeicao;paginas_sessao;duracao_sessao
-    * o nome do arquivo unificado resultante dessa operação está manualmente e transitoriamente escrito no Makefile, de forma estática, portanto exigirá renomeação manual (ex.: `portal-paginas-destino-2021-10.csv` em vez de `portal-paginas-destino-2021-09.csv` para os arquivos de outubro) do mês do nome do prórpio arquivo criado na pasta `data/` 
+   
     * Padrão da nomenclatura:
 
          - propriedade PORTAL: "portal-paginas-destino-AAAA-MM.csv";
