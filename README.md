@@ -80,31 +80,39 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
   * Entre a importação e classificação de um arquivo para outro é necessário atualizar a página.
 
 ## Unificação dos arquivos, ajustes, validação e publicação
-6. Ao final da classificação de todos os arquivos da propriedade PORTAL, salvá-los numa pasta transitória de nome `raw/` no repositório https://github.com/dados-mg/google-analytics e unificá-los em uma única planilha da forma como segue:
+
+1. Ao final da classificação de todos os arquivos da propriedade PORTAL, salvá-los numa pasta transitória de nome `raw/` no repositório https://github.com/dados-mg/google-analytics e unificá-los em uma única planilha da forma como segue:
 
 * **modo provisório**: utilizar o comando `$ awk '(NR == 1) || (FNR > 1)' *.csv > portal-paginas-destino-AAAA-MM.csv` na `bash` da pasta onde estiverem salvos os arquivos csv (para este comando funcionar, a pasta deve conter somente os arquivos referentes à propriedade PORTAL, e pelo menos um deles deve conter o cabeçalho `propriedade;mes;pagina_destino;URL;sessoes;novas_sessoes_porcentagem;usuarios_novos;taxa_rejeicao;paginas_sessao;duracao_sessao
 
 * **modo a ser implementado**:
 
     * na bash aberta na raiz do repositório https://github.com/dados-mg/google-analytics, digitar `make unify_resource`
-    * para este comando funcionar, a pasta deve conter somente os arquivos referentes à propriedade PORTAL, e pelo menos um deles deve conter o cabeçalho `propriedade;mes;pagina_destino;URL;sessoes;novas_sessoes_porcentagem;usuarios_novos;taxa_rejeicao;paginas_sessao;duracao_sessao
+    * para este comando funcionar, a pasta deve conter somente os arquivos referentes à propriedade PORTAL, e pelo menos um deles deve conter o cabeçalho 
+    
+    `propriedade;mes;pagina_destino;URL;sessoes;novas_sessoes_porcentagem;usuarios_novos;taxa_rejeicao;paginas_sessao;duracao_sessao`
 
     * Padrão da nomenclatura:
 
          - propriedade PORTAL: "portal-paginas-destino-AAAA-MM.csv";
+         - propriedade CKAN: "ckan-paginas-destino-AAAA-MM.csv";
+         
 
-  - É interessante observar para o arquivo unificado o percentual de codificação de-para igual a "Outros" em relação ao total classificado. Um percentual grande (>10%) pode indicar a necessidade do aprimoramento do castro De-para (descrito abaixo)
-7. Fazer a inclusão do novo recurso no arquivo [datapackage.json](https://github.com/dados-mg/google-analytics/blob/master/datapackage.json)
-8. Seguir as orientações do arquivo [README.md](https://github.com/dados-mg/google-analytics/blob/master/README.md) para validar o novo arquivo incluído, juntamente com o datapackage revisado
+- É interessante observar para o arquivo unificado o percentual de codificação de-para igual a "Outros" em relação ao total classificado. Um percentual grande (>10%) pode indicar a necessidade do aprimoramento do castro De-para (descrito abaixo)
+  
+2. Fazer a inclusão do novo recurso no arquivo [datapackage.json](https://github.com/dados-mg/google-analytics/blob/master/datapackage.json)
+
+3. Seguir as orientações do arquivo [README.md](https://github.com/dados-mg/google-analytics/blob/master/README.md) para validar o novo arquivo incluído, juntamente com o datapackage revisado
 
 ```
 $ frictionless validate datapackage.json
 ```
 
-9. Realizar o push com as atualizações do conjunto para o [github](https://github.com/dados-mg/google-analytics) seguindo [fluxo de trabalho em repositórios github](https://github.com/transparencia-mg/handbook/blob/master/fluxo-trabalho-github.md)
+4. Realizar o push com as atualizações do conjunto para o [github](https://github.com/dados-mg/google-analytics) seguindo [fluxo de trabalho em repositórios github](https://github.com/transparencia-mg/handbook/blob/master/fluxo-trabalho-github.md)
 
 
 ## Aprimorando o cadastro De-para
+
 1. Acesse [PORTAL DA TRANSPARÊNCIA - GOOGLE ANALYTICS](https://transparencia-google-analytics.herokuapp.com/users/sign_in)
   * Caso não possua login e senha solicitar via e-mail para gabriel.dornas@cge.mg.gov.br
 2. No menu lateral esquerdo selecione Navegação>Classificação de URLs
