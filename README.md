@@ -86,7 +86,7 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 
 1. Ao final da classificação de todos os arquivos da propriedade PORTAL, salvá-los numa pasta transitória de nome `raw/` no repositório https://github.com/dados-mg/google-analytics e unificá-los em uma única planilha da forma como segue:
 
-* **modo provisório**: utilizar o comando `$ awk '(NR == 1) || (FNR > 1)' *.csv > portal-paginas-destino-AAAA-MM.csv` na `bash` da pasta onde estiverem salvos os arquivos csv (para este comando funcionar, a pasta deve conter somente os arquivos referentes à propriedade PORTAL, e pelo menos um deles deve conter o cabeçalho `propriedade;mes;pagina_destino;URL;sessoes;novas_sessoes_porcentagem;usuarios_novos;taxa_rejeicao;paginas_sessao;duracao_sessao
+* **modo provisório**: utilizar o comando `$ awk '(NR == 1) || (FNR > 0)' *.csv > portal-paginas-destino-AAAA-MM.csv` na `bash` da pasta onde estiverem salvos os arquivos csv (para este comando funcionar, a pasta deve conter somente os arquivos referentes à propriedade PORTAL, e pelo menos um deles deve conter o cabeçalho `propriedade;mes;pagina_destino;URL;sessoes;novas_sessoes_porcentagem;usuarios_novos;taxa_rejeicao;paginas_sessao;duracao_sessao
 
 * **modo a ser implementado**:
 
