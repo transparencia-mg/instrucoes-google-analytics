@@ -56,7 +56,10 @@ Referências sobre a criação deste app, incluindo versões Ruby e Rails estão
 
 4. Apagar as 3 colunas mais à direita (**não faça esse item sem ter checado o anterior**). A última coluna remanescente à direita deverá ser 'Duração média da sessão', ou seja, coluna G (formato hh:mm:ss).
 
-5. Exportar o resultado deste trabalho em um arquivo .csv
+5. Exportar o resultado deste trabalho em um arquivo .csv, tal qual mostrado na figura abaixo (arquivo > fazer download > csv):
+
+![image](https://user-images.githubusercontent.com/52294411/148548915-85eaf7d6-dc93-4d2d-85cf-26b5204c082b.png)
+
     - Nome do arquivo exportado **NÃO** deverá ser modificado;
     - Vírgula (",") deverá ser o caracter de separação de colunas do arquivo exportado, caso contrário classificação automática descrita abaixo irá apresentar erro. Google sheets já faz a exportação com este padrão, mas vale conferir (vide itens 5 e 6).
 
