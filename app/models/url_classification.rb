@@ -1,0 +1,2 @@
+class UrlClassification < ApplicationRecord
+end
