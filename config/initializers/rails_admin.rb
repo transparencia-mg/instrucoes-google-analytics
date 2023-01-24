@@ -6,6 +6,8 @@ RailsAdmin.config do |config|
     'Classificar Páginas de Destino' => 'importations/new' # COLOCAR LINK DESEJADO
   }
 
+  config.navigation_static_label = "Lins Úteis"
+
   ### Popular gems integration
 
   ## == Devise ==
