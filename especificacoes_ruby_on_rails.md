@@ -60,7 +60,7 @@ rails g rails_admin:install
 
 ```
 # termianl
-rails g model nome:string user admin:boolean
+rails g model user nome:string admin:boolean
 ```
 
 - implementação devise gem
