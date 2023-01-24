@@ -1,10 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name:
-  admin:
+  nome: MyString
+  admin: false
 
 two:
-  name:
-  admin:
-
+  nome: MyString
+  admin: false

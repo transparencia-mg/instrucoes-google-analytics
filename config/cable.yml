@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: transparencia_google_analytics_production
+  channel_prefix: instrucoes_google_analytics_production

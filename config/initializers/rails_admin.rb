@@ -1,12 +1,9 @@
 RailsAdmin.config do |config|
 
-  # Customizando o nome do app
-  config.main_app_name = ["Portal da Transparência", "| Google Analytics"]
-
-  # Personalizando menu de navegação com links adicionais
+  config.main_app_name = ["Google Analytics", "| DCTA"]
+  
   config.navigation_static_links = {
-    # Apontar para youtube com vídeos e tutoriais para alimentação de cada tabela
-    'Arquivo Google Analytics' => 'importations/new',
+    'Classificar Páginas de Destino' => 'importations/new' # COLOCAR LINK DESEJADO
   }
 
   config.navigation_static_label = "Lins Úteis"
@@ -34,19 +31,19 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
-  # config.actions do
-  #   dashboard                     # mandatory
-  #   index                         # mandatory
-  #   new
-  #   export
-  #   bulk_delete
-  #   show
-  #   edit
-  #   delete
-  #   show_in_app
+  config.actions do
+    dashboard                     # mandatory
+    index                         # mandatory
+    new
+    export
+    bulk_delete
+    show
+    edit
+    delete
+    show_in_app
 
-  #   ## With an audit adapter, you can add:
-  #   # history_index
-  #   # history_show
-  # end
+    ## With an audit adapter, you can add:
+    # history_index
+    # history_show
+  end
 end

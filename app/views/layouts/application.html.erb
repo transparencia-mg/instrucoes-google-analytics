@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rails Admin Template</title>
+    <title>InstrucoesGoogleAnalytics</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,16 +13,4 @@
   <body>
     <%= yield %>
   </body>
-
-  <script>
-    $(document).ready(function() {
-      $('.puke-icon, .clean-link, .comment-send').click(function() {
-          setTimeout(function(){
-                     window.location.reload(true); },
-               50);
-            });
-
-      });
-  </script>
-
 </html>

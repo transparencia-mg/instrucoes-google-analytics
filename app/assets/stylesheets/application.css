@@ -13,19 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.signin-form{
-    max-width: 200px;
-    margin: 40px auto;
-    background: white;
-    padding: 10px;
-}
-.signin-view > h2, h3{
-  text-align: center;
-}
-
-.signin-form input{
-    display: block;
-    margin: 10px auto;
-    padding: 4px;
-}
