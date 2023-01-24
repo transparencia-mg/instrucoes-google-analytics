@@ -1,5 +1,11 @@
 RailsAdmin.config do |config|
 
+  config.main_app_name = ["Google Analytics", "| DCTA"]
+  
+  config.navigation_static_links = {
+    'Classificar Páginas de Destino' => 'importations/new' # COLOCAR LINK DESEJADO
+  }
+
   ### Popular gems integration
 
   ## == Devise ==
