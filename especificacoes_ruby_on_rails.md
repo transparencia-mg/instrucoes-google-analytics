@@ -219,7 +219,7 @@ config.i18n.available_locales = ["pt-BR"]
 config.i18n.default_locale = :'pt-BR'
 ```
 
-criação dos arquivos enviroments/locales/pt-BR.yml e enviroments/locales/devise.pt-BR.yml (prestar atenção no padrão para escrever o nome dos models. Sempre traduzir o nome dos atributos aqui e não na configuração de cada model)
+criação dos arquivos config/locales/pt-BR.yml e config/locales/devise.pt-BR.yml (prestar atenção no padrão para escrever o nome dos models. Sempre traduzir o nome dos atributos aqui e não na configuração de cada model)
 
 [x] Personalizando a disposição dos itens no menu lateral
 
