@@ -7,6 +7,7 @@ ruby '3.0.3'
 gem 'rails', '~> 6.1.7'
 gem 'rails_admin', '~> 2.1.1'
 gem 'devise'
+gem 'cancancan', '~> 1.15.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
