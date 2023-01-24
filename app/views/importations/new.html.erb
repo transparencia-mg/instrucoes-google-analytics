@@ -1,0 +1,9 @@
+<%= flash[:message] %>
+<p>
+    Selecione o arquivo do Google Analytics a ser importado.
+</p>
+<!-- Possível usar o from-to aqui? -->
+<%= form_tag importations_import_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Importar Arquivos", class:"my-link" %>
+<% end %>
