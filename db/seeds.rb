@@ -4,10 +4,10 @@ print "Deletando todos os usuários"
 User.delete_all
 # Criar usuário
 print("Criando todos os usuários")
-User.create name:'Gabriel Dornas', admin:true, email: 'gabrielbdornas@gmail.com', password: 123456, password_confirmation:123456
-User.create name:'Silviana faria', admin:true, email: 'silviana.faria@cge.mg.gov.br', password: 123456, password_confirmation:123456
-User.create name:'Késia Bonfá', admin:true, email: 'kesia.bomfa@cge.mg.gov.br', password: 123456, password_confirmation:123456
-User.create name:'André Amorim', admin:true, email: 'andre.amorim@cge.mg.gov.br', password: 123456, password_confirmation:123456
+User.create nome:'Gabriel Dornas', admin:true, email: 'gabrielbdornas@gmail.com', password: 123456, password_confirmation:123456
+User.create nome:'Silviana faria', admin:true, email: 'silviana.faria@cge.mg.gov.br', password: 123456, password_confirmation:123456
+User.create nome:'Késia Bonfá', admin:true, email: 'kesia.bomfa@cge.mg.gov.br', password: 123456, password_confirmation:123456
+User.create nome:'André Amorim', admin:true, email: 'andre.amorim@cge.mg.gov.br', password: 123456, password_confirmation:123456
 
 print "Deletando toda classificação"
 UrlClassification.delete_all
